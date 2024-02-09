@@ -4,8 +4,6 @@ package Logica_del_programa;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 import javax.swing.JOptionPane;
 
 /**
@@ -13,9 +11,11 @@ import javax.swing.JOptionPane;
  * @author Mia Symns
  */
 public class Main extends javax.swing.JFrame {
+
     private AdminPalabrasSecretas Secretas;
     private JuegoAhorcadoFijo JuegoFijo;
     private JuegoAhorcadoAzar JuegoAzar;
+
     /**
      * Creates new form Main
      */
@@ -117,37 +117,42 @@ public class Main extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             String NeoPalabra = JOptionPane.showInputDialog(this, "Ingrese una palabra");
-            if (!NeoPalabra.isBlank()){
+            if (!NeoPalabra.isBlank()) {
                 JuegoFijo = new JuegoAhorcadoFijo(NeoPalabra);
                 JuegoFijo.Jugar();
             }
-        } catch (Exception ex){ }
+        } catch (Exception ex) {
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             JuegoAzar = new JuegoAhorcadoAzar(Secretas);
             JuegoAzar.Jugar();
-        } catch (Exception ex) { }
+        } catch (Exception ex) {
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Object Elected = JOptionPane.showInputDialog(this, "eliga la accion que desea realizar: ", "Administrador de palabras", JOptionPane.YES_NO_OPTION, null, new String [] {"Añadir palabra","Eliminar palabra"}, 0);
-        if (Elected.equals("Añadir palabra")){
-            try {
+        try {
+            Object Elected = JOptionPane.showInputDialog(this, "eliga la accion que desea realizar: ", "Administrador de palabras", JOptionPane.YES_NO_OPTION, null, new String[]{"Añadir palabra", "Eliminar palabra"}, 0);
+            if (Elected.equals("Añadir palabra")) {
                 String NeoPalabra = JOptionPane.showInputDialog(this, "Ingrese la palabra que desea agregar");
-                if (NeoPalabra.isBlank()){
+                if (NeoPalabra.isBlank()) {
                     Secretas.AddPalabra(NeoPalabra);
-                } JOptionPane.showMessageDialog(this, "Por favor ingrese una palabra!");
-            } catch (Exception Ex){}
-        } else {
-            if (Secretas.getLista().toArray().length > 1){
-                try {
+                }
+                JOptionPane.showMessageDialog(this, "Por favor ingrese una palabra!");
+            } else {
+                if (Secretas.getLista().toArray().length > 1) {
                     Object Elegida = JOptionPane.showInputDialog(this, "Eliga la palabra que desea eliminar", "Eliminar palabra", JOptionPane.OK_CANCEL_OPTION, null, Secretas.getLista().toArray(), 0);
                     Secretas.DeletePalabra(Elegida.toString());
-                } catch (Exception Ex){}
-            } else JOptionPane.showMessageDialog(this, "Hay muy pocas palabras para eliminar algo");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Hay muy pocas palabras para eliminar algo");
+                }
+            }
+        } catch (Exception Ex) {
         }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
