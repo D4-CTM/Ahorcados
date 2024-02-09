@@ -1,4 +1,4 @@
-package prograii_ahorcado;
+package Logica_del_programa;
 
 public abstract class JuegoAhorcadoBase implements JuegoAhorcado {
     protected String palabrasecreta, palabraactual;
