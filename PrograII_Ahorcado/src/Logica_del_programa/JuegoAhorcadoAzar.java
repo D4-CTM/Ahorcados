@@ -43,7 +43,7 @@ public class JuegoAhorcadoAzar extends JuegoAhorcadoBase {
     public void Jugar() {
         this.intentos = 9;
         inicializarPalabraSecreta();
-        while (intentos > 0 || !hasGanado()){
+        while (intentos > 0 && !hasGanado()){
             String PalabraIngresada = "";
             do {
                 try {
@@ -53,8 +53,8 @@ public class JuegoAhorcadoAzar extends JuegoAhorcadoBase {
                 }
                 if (PalabraIngresada.length() != 1) JOptionPane.showMessageDialog(null, "Por favor limitese a un solo caracter");
             } while (PalabraIngresada.isBlank() || PalabraIngresada.length() != 1);
-            if (this.verificarLetra(PalabraIngresada.charAt(0))){
-                actualizarPalabraActual(PalabraIngresada.charAt(0));
+            if (this.verificarLetra(PalabraIngresada.toLowerCase().charAt(0))){
+                actualizarPalabraActual(PalabraIngresada.toLowerCase().charAt(0));
                 JOptionPane.showMessageDialog(null,"Ha acertado un caracter!");
             } else {
                 intentos--;
